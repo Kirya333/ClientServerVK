@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 
 struct Photos: Codable {
@@ -19,7 +20,7 @@ struct ResponsePhotos: Codable {
 }
 
 
-class Photo: Codable {
+class Photo: Object, Codable {
     @objc dynamic var albumID: Int = 0
     @objc dynamic var id: Int = 0
     @objc dynamic var ownerID: Int = 0
@@ -33,13 +34,13 @@ class Photo: Codable {
         case sizes, likes
     }
     
-//    override static func ignoredProperties() -> [String] {
-//        return ["sizes", "likes"]
-//    }
+    override static func ignoredProperties() -> [String] {
+        return ["sizes", "likes"]
+    }
 }
 
 
-class Likes: Codable {
+class Likes: Object, Codable {
     @objc dynamic var count: Int = 0
     @objc dynamic var userLikes: Int = 0
 
@@ -50,7 +51,7 @@ class Likes: Codable {
 }
 
 
-class Size: Codable {
+class Size: Object, Codable {
     @objc dynamic var url: String = ""
     @objc dynamic var type: String = ""
 }
