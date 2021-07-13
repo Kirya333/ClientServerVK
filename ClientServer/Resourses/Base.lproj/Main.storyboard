@@ -156,7 +156,7 @@
         <!--Friends-->
         <scene sceneID="cKd-I3-ew1">
             <objects>
-                <viewController title="Friends" id="irF-kH-eh9" sceneMemberID="viewController">
+                <viewController title="Friends" id="irF-kH-eh9" customClass="FriendsListController" customModule="ClientServer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hg0-Gj-YxF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -196,7 +196,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="hJQ-vA-RUn"/>
                     <connections>
-                        <segue destination="pMI-lJ-ZON" kind="show" id="9M5-zm-So2"/>
+                        <outlet property="friendsTableView" destination="mjd-RS-ay3" id="rWI-tn-d5c"/>
+                        <outlet property="searchBar" destination="xI0-zu-V0a" id="pZu-24-FgN"/>
+                        <segue destination="pMI-lJ-ZON" kind="show" identifier="fromFriendsListToFriendsPhotos" id="9M5-zm-So2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5d5-JH-Ea5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -206,7 +208,7 @@
         <!--Photos-->
         <scene sceneID="YvD-b0-F2x">
             <objects>
-                <viewController title="Photos" id="pMI-lJ-ZON" sceneMemberID="viewController">
+                <viewController title="Photos" id="pMI-lJ-ZON" customClass="FriendsPhotosViewController" customModule="ClientServer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eGz-iY-Hno">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,6 +236,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="f76-rG-DVg"/>
                     <connections>
+                        <outlet property="friendPhotosCollectionView" destination="uUs-jU-8cZ" id="1Uq-cK-O1u"/>
                         <segue destination="Iyf-mv-TJq" kind="show" id="Rb5-o8-aIY"/>
                     </connections>
                 </viewController>
@@ -241,15 +244,15 @@
             </objects>
             <point key="canvasLocation" x="6194" y="-413"/>
         </scene>
-        <!--View Controller-->
+        <!--Gallery View Controller-->
         <scene sceneID="X5D-70-mbn">
             <objects>
-                <viewController id="Iyf-mv-TJq" sceneMemberID="viewController">
+                <viewController id="Iyf-mv-TJq" customClass="GalleryViewController" customModule="ClientServer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pZC-Ib-bsY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmH-AC-T8f">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmH-AC-T8f" customClass="GalleryHorisontalView" customModule="ClientServer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="375"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -264,6 +267,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="b5I-Dk-oHs"/>
+                    <connections>
+                        <outlet property="galleryView" destination="lmH-AC-T8f" id="mw0-yq-Pkg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCM-Pf-v0D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

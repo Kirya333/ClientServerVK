@@ -71,7 +71,7 @@ class LoginFormController: UIViewController {
             fadeInAnimate.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
             fadeInAnimate.fillMode = CAMediaTimingFillMode.backwards
             
-    //        guard let self = self else { return }
+//            guard let self = self else { return }
             self.loginTextField.layer.add(fadeInAnimate, forKey: nil)
             self.passwordTextField.layer.add(fadeInAnimate, forKey: nil)
         }

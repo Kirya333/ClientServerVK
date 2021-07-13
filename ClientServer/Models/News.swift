@@ -10,7 +10,8 @@ import UIKit
 
 struct News {
     var description: String?
-    //var photos: [UIImage]?
+    var photos: [UIImage]?
     var photo: UIImage?
 }
+
 
