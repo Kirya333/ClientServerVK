@@ -11,6 +11,7 @@ target 'ClientServer' do
   pod 'SwiftKeychainWrapper'
   pod 'RealmSwift'
   pod 'DynamicJSON'
+  pod 'SDWebImage'
   
 
 

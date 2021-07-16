@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import SDWebImage
+import SDWebImage
 
 class FriendTableViewCell: UITableViewCell {
     

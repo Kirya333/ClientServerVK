@@ -17,30 +17,47 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFi-zB-xyQ">
-                        <rect key="frame" x="-94" y="-42" width="240" height="128"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFi-zB-xyQ">
+                        <rect key="frame" x="5" y="5" width="40" height="40"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FSQ-k6-Bfs">
-                                <rect key="frame" x="27" y="9" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FSQ-k6-Bfs">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-kM-JZc">
-                                <rect key="frame" x="124" y="58" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-kM-JZc">
+                                <rect key="frame" x="5" y="5" width="30" height="30"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="3dV-HN-dcG"/>
+                            <constraint firstItem="kkl-kM-JZc" firstAttribute="centerX" secondItem="FSQ-k6-Bfs" secondAttribute="centerX" id="5Ns-7A-XkI"/>
+                            <constraint firstAttribute="height" secondItem="kkl-kM-JZc" secondAttribute="height" multiplier="1.33333" id="62b-GS-SuV"/>
+                            <constraint firstAttribute="height" constant="40" id="67k-7J-pNZ"/>
+                            <constraint firstAttribute="width" secondItem="rFi-zB-xyQ" secondAttribute="height" multiplier="1:1" id="7zO-Yw-M1Y"/>
+                            <constraint firstItem="kkl-kM-JZc" firstAttribute="centerY" secondItem="FSQ-k6-Bfs" secondAttribute="centerY" id="IOs-1w-t4C"/>
+                            <constraint firstItem="FSQ-k6-Bfs" firstAttribute="centerX" secondItem="rFi-zB-xyQ" secondAttribute="centerX" id="UQ9-dz-wxa"/>
+                            <constraint firstAttribute="height" secondItem="FSQ-k6-Bfs" secondAttribute="height" id="Yc6-dQ-hVw"/>
+                            <constraint firstAttribute="width" secondItem="FSQ-k6-Bfs" secondAttribute="width" id="ght-kd-YSx"/>
+                            <constraint firstItem="kkl-kM-JZc" firstAttribute="width" secondItem="rFi-zB-xyQ" secondAttribute="width" multiplier="0.75" id="njr-2c-96d"/>
+                        </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ib-Kb-EG6">
-                        <rect key="frame" x="233" y="12" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ib-Kb-EG6">
+                        <rect key="frame" x="75" y="15" width="200" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="rFi-zB-xyQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Fud-cS-ejq"/>
+                    <constraint firstItem="FSQ-k6-Bfs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Td6-iz-UzB"/>
+                    <constraint firstItem="rFi-zB-xyQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="U6v-vO-B7K"/>
+                    <constraint firstItem="8ib-Kb-EG6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uix-1r-Aop"/>
+                    <constraint firstItem="rFi-zB-xyQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uto-Xe-R2r"/>
+                    <constraint firstAttribute="bottom" secondItem="rFi-zB-xyQ" secondAttribute="bottom" constant="5" id="jey-dS-Aqk"/>
+                    <constraint firstAttribute="trailing" secondItem="8ib-Kb-EG6" secondAttribute="trailing" constant="45" id="uwe-Wd-QqW"/>
+                    <constraint firstItem="8ib-Kb-EG6" firstAttribute="leading" secondItem="FSQ-k6-Bfs" secondAttribute="trailing" constant="30" id="vz8-cy-rcv"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
