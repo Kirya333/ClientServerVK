@@ -56,7 +56,7 @@ class VKService {
     
     
     
-    func getPhotos(by ownerId: Int, completion: @escaping ([Photo]) -> ()) {
+    func getPhotos(by ownerId: Int, completion: @escaping ([PhotoModel]) -> ()) {
         let method = "photos.get"
         
         let parameters: Parameters = [
@@ -91,7 +91,7 @@ class VKService {
     
     
     
-    func getGroupsList(by userId: Int?, completion: @escaping ([Group]) -> ()) {
+    func getGroupsList(by userId: Int?, completion: @escaping ([GroupModel]) -> ()) {
         let method = "groups.get"
         
         var parameters: Parameters = [

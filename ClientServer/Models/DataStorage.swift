@@ -2,7 +2,7 @@
 //  DataStorage.swift
 //  ClientServer
 //
-//  Created by Кирилл Тарасов on 04.07.2021.
+//  Created by Кирилл Тарасов on 29.06.2021.
 //
 
 import Foundation
@@ -13,5 +13,6 @@ final class DataStorage {
     
     private init() {}
     
-    var newsArray = [News]()
+    var newsArray = [FirebaseNews]()
 }
+

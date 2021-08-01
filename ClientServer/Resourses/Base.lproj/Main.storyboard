@@ -162,7 +162,7 @@
                     <navigationItem key="navigationItem" title="Groups" id="CNs-Qf-6Eq">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="mns-f6-4eJ">
                             <connections>
-                                <action selector="addGroup:" destination="ix3-zG-CaD" id="k32-HQ-Oo4"/>
+                                <action selector="addGroupWithSegue:" destination="ix3-zG-CaD" id="jZ1-4l-Uso"/>
                                 <segue destination="rez-NZ-ygR" kind="show" id="aJh-Xy-GFt"/>
                             </connections>
                         </barButtonItem>

@@ -54,7 +54,9 @@ class FriendsPhotosViewController: UIViewController {
     }
     
     func setPhotosBy(userId: Int) {
-        apiService.getPhotos(by: userId, completion: <#([Photo]) -> ()#>)
+        apiService.getPhotos(by: userId) { photos in
+            
+        }
         
         guard let realm = try? Realm() else { return }
         photos = realm.objects(PhotoModel.self).filter("ownerID == \(userId)")

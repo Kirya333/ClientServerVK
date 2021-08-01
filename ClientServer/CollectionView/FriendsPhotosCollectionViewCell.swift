@@ -29,16 +29,13 @@ class FriendsPhotosCollectionViewCell: UICollectionViewCell {
         countLabel.text = "0"
     }
     
-    func configure(photo: Photo) {
-        if photo.likes.userLikes > 0 {
+    func configure(photo: PhotoModel) {
+        if photo.userLikes > 0 {
             isTap = true
             heartImageView.image = UIImage(systemName: "heartFill")
         }
-        for photoArray in photo.sizes {
-            if photoArray.type == "m" {
-//                friendPhotoImageView.sd_setImage(with: URL(string: photoArray.url))
-                likeButton.addTarget(self, action: #selector(onTap), for: .touchUpInside)
-            }
+        if !photo.urlByPhoto.isEmpty {
+            likeButton.addTarget(self, action: #selector(onTap), for: .touchUpInside)
         }
     }
     
