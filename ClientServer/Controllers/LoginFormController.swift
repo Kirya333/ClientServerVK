@@ -122,7 +122,6 @@ class LoginFormController: UIViewController {
         
         
         
-        
         @IBAction func enterButtonPressed(_ sender: Any) {
 
             let login = loginTextField.text!
