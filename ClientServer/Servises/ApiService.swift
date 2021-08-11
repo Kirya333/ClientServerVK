@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 import DynamicJSON
 import FirebaseDatabase
+import PromiseKit
 
 class VKService {
     
@@ -106,7 +107,7 @@ class VKService {
     
     
     
-    func getGroupsList(by userId: Int?, completion: @escaping ([GroupModel]) -> ()) {
+    func getGroupsList(by userId: Int?) -> Promise<[GroupModel]> {
         let method = "groups.get"
         
         var parameters: Parameters = [
@@ -125,17 +126,38 @@ class VKService {
         
         let url = baseUrl + method
         
-        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
-            guard let self = self else { return }
-            guard let data = response.value else { return }
-            guard let items = JSON(data).response.items.array else { return }
-
-            let groups = items.map { GroupModel(data: $0) }
-            
-            self.realmService.add(models: groups)
-            
+//        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
+//            guard let self = self else { return }
+//            guard let data = response.value else { return }
+//            guard let items = JSON(data).response.items.array else { return }
+//
+//            let groups = items.map { GroupModel(data: $0) }
+//
+//            self.realmService.add(models: groups)
+        
+        let promise = Promise <[GroupModel]> { resolver in
+            AF.request(url, method: .get, parameters: parameters).responseData { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    if let errorMessage = json.error.error_msg.string {
+                        let error = VKServiceError.generalError(message: errorMessage)
+                            resolver.reject(error)
+                                return
+                    }
+                    guard let items = JSON(value).response.items.array else { return }
+                    let groups = items.map { GroupModel(data: $0)}
+                    resolver.fulfill(groups)
+                    
+                case .failure(let error):
+                    resolver.reject(error)
+                    return
+                        }
+                    }
+                }
+        return promise
             }
-        }
     
     
     

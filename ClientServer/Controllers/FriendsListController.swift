@@ -47,15 +47,16 @@ class FriendsListController: UIViewController {
                      self.friendsTableView.reloadData()
             }
         }
-    }
     
     func getMyFriends() -> [UserModel] {
         if searchFlag {
-            return searchFriends
+            return [UserModel]()
         }
         
-        return friends
+        return [UserModel]()
     }
+
+    
     
     func arrayLetter() -> [String] {
         var resultArray = [String]()
@@ -84,20 +85,20 @@ class FriendsListController: UIViewController {
         return resultArray
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == fromFriendsListToFriendsPhotosSegueIdentifier {
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromFriendsListToFriendsPhotos" {
             guard let friendsPhotosViewController = segue.destination as? FriendsPhotosViewController
             else { return }
-            
+
             guard let indexPath = sender as? IndexPath else { return }
             let friend = arrayByLetter(letter: arrayLetter()[indexPath.section])[indexPath.row]
-            
+
             friendsPhotosViewController.friendID = friend.id
-            
+
         }
     }
-}
 
+}
 
 extension FriendsListController: UITableViewDataSource, UITableViewDelegate {
     
