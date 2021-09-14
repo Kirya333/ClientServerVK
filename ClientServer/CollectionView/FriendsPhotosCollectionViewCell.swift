@@ -29,7 +29,7 @@ class FriendsPhotosCollectionViewCell: UICollectionViewCell {
         countLabel.text = "0"
     }
     
-    func configure(photo: PhotoModel) {
+    func configure(photo: Photo) {
         if photo.userLikes > 0 {
             isTap = true
             heartImageView.image = UIImage(systemName: "heartFill")

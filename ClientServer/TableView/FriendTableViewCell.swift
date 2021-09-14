@@ -27,7 +27,7 @@ class FriendTableViewCell: UITableViewCell {
         nameLabel.text = nil
     }
     
-    func configure(user: UserModel) {
+    func configure(user: User) {
         nameLabel.text = user.getFullName()
         avatarImageView.sd_setImage(with: URL(string: user.avatar), placeholderImage: UIImage(named: "camera"))
     }

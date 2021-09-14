@@ -17,11 +17,12 @@ class FriendsListController: UIViewController {
     let friendTableViewCellIdentifier = "FriendTableViewCellIdentifier"
     let fromFriendsListToFriendsPhotosSegueIdentifier = "fromFriendsListToFriendsPhotos"
     
-    let apiService = VKService()
-    let realmService = RealmService()
+//    let apiService = VKService()
+//    let realmService = RealmService()
+    let apiService = UserAdapter()
     
-    var friends = [UserModel]()
-    var searchFriends = [UserModel]()
+    var friends = [User]()
+    var searchFriends = [User]()
     
     var searchFlag = false
     
@@ -30,7 +31,11 @@ class FriendsListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setFriends()
+        apiService.getFriends(by: nil) { [ weak self] friends in
+            guard let self = self else { return }
+            self.friends = friends
+            self.friendsTableView.reloadData()
+        }
         
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
@@ -39,21 +44,21 @@ class FriendsListController: UIViewController {
         
     }
     
-    func setFriends() {
-        apiService.getFriendsList(by: nil)
-
-                 if let friends = self.realmService.read(object: UserModel.self) as? [UserModel] {
-                     self.friends = friends
-                     self.friendsTableView.reloadData()
-            }
-        }
+//    func setFriends() {
+//        apiService.getFriendsList(by: nil)
+//
+//                 if let friends = self.realmService.read(object: UserModel.self) as? [UserModel] {
+//                     self.friends = friends
+//                     self.friendsTableView.reloadData()
+//            }
+//        }
     
-    func getMyFriends() -> [UserModel] {
+    func getMyFriends() -> [User] {
         if searchFlag {
-            return [UserModel]()
+            return searchFriends
         }
         
-        return [UserModel]()
+        return friends
     }
 
     
@@ -72,8 +77,8 @@ class FriendsListController: UIViewController {
         return resultArray
     }
     
-    func arrayByLetter(letter: String) -> [UserModel] {
-        var resultArray = [UserModel]()
+    func arrayByLetter(letter: String) -> [User] {
+        var resultArray = [User]()
         
         for friend in getMyFriends() {
             let nameLetter = String(friend.getFullName().prefix(1))

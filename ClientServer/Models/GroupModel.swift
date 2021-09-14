@@ -26,6 +26,14 @@ class GroupModel: Object {
         self.avatar = data.photo_50.string ?? ""
     }
     
+    convenience required init(group: Group) {
+        self.init()
+
+        self.id = group.id
+        self.name = group.name
+        self.avatar = group.avatar
+    }
+    
     override public func isEqual(_ object: Any?) -> Bool {
         
         if let other = object as? GroupModel {
