@@ -16,10 +16,10 @@ protocol RealmServiceProtocol {
 }
 
 class RealmService: RealmServiceProtocol {
-
+    
     let config = Realm.Configuration(schemaVersion: 1)
     lazy var realm = try! Realm(configuration: config)
-
+    
     func add(models: [Object]) {
         do {
             self.realm.beginWrite()
@@ -30,26 +30,26 @@ class RealmService: RealmServiceProtocol {
             print(error.localizedDescription)
         }
     }
-
+    
     func read(object: Object.Type) -> [Object] {
         let models = realm.objects(object)
-
+        
         return Array(models)
     }
     
     func read(object: Object.Type, filter: String) -> [Object] {
         let models = realm.objects(object).filter(filter)
-
+        
         return Array(models)
     }
-
+    
     func delete(model: Object) {
         do {
             self.realm.beginWrite()
             self.realm.delete(model)
             try self.realm.commitWrite()
             print(realm.configuration.fileURL as Any)
-        } catch {
+        }   catch {
             print(error.localizedDescription)
         }
     }

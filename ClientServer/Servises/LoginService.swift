@@ -19,5 +19,4 @@ class LoginService {
             return false
         }
     }
-    
 }

@@ -11,14 +11,13 @@ import DynamicJSON
 import FirebaseDatabase
 import PromiseKit
 
-class VKService {
+class VKService: VKServiceInterface {
     
     let baseUrl = "https://api.vk.com/method/"
     let version = "5.131"
     let realmService = RealmService()
     let dispatchGroup = DispatchGroup()
     let myQueue = OperationQueue()
-    
     
     
     
