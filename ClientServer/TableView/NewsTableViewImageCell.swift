@@ -29,12 +29,12 @@ class NewsTableViewImageCell: UITableViewCell {
         photoImageView.image = nil
     }
     
-    func configure(news: FirebaseNews) {
-        if let image = news.urlImage {
+    func configure(news: NewViewModel) {
+        if let image = news.image {
             photoImageView.sd_setImage(with: URL(string: image))
         }
         
-        let height = contentView.frame.width * news.apectRatio
+        let height = contentView.frame.width * news.aspectRatio
         photoImageViewFrame(height: height)
         
     }

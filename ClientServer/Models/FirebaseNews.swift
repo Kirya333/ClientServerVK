@@ -23,11 +23,6 @@ class FirebaseNews {
     var heightImage: Int?
     var widthImage: Int?
     
-    var apectRatio: CGFloat { return CGFloat(heightImage ?? 1) / CGFloat(widthImage ?? 1) }
-    
-    var isExpanded: Bool = false
-    var heightText: CGFloat = 0
-    
     init(data: JSON) {
         self.ref = nil
         self.postId = data.post_id.int ?? 0
@@ -99,11 +94,4 @@ class FirebaseNews {
             "widthImage": widthImage,
         ]
     }
-    
-    func calculateTextHeight(from width: CGFloat, font: UIFont = .systemFont(ofSize: 17)) {
-        let textBlock = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let rect = text?.boundingRect(with: textBlock, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
-        heightText = ceil(rect?.height ?? 0)
-    }
-    
 }

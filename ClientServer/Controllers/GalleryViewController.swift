@@ -6,14 +6,14 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 class GalleryViewController: UIViewController {
     
    
     @IBOutlet weak var galleryView: GalleryHorisontalView!
     
-    var galleryPhotos: Results<PhotoModel>?
+    var galleryPhotos: [Photo]?
     var selectedImageIndex = 0
     
     override func viewDidLoad() {

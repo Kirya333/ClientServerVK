@@ -151,16 +151,13 @@ class NewsTableViewCountersCell: UITableViewCell {
         likeFlag = false
     }
     
-    func configure(news: FirebaseNews) {
-        countLikesLabel.text = String(news.likesCount)
-        countCommentsLabel.text = String(news.commentsCount)
-        countRepostsLabel.text = String(news.repostsCount)
-        countViewsLabel.text = news.viewsCount < 999 ? String(news.viewsCount): "999 +"
-        
-        if news.userLikes > 0 {
-            likeFlag = true
-            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }
+    func configure(news: NewViewModel) {
+        countLikesLabel.text = news.likesCount
+                 countViewsLabel.text = news.viewsCount
+                 countRepostsLabel.text = news.repostsCount
+                 countCommentsLabel.text = news.commentsCount
+                 likeFlag = news.likeFlag
+                 likeButton.setImage(news.likeButtonImage, for: .normal)
     }
     
     override func prepareForReuse() {

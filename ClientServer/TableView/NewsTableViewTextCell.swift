@@ -45,7 +45,7 @@ class NewsTableViewTextCell: UITableViewCell {
     func showMoreButtonFrame(title: String) {
         showMoreOrLessButton.frame = CGRect(x: NewsTableViewTextCell.smallIndent, y: TextLabel.frame.maxY + NewsTableViewTextCell.smallIndent, width: NewsTableViewTextCell.buttonWidth, height: NewsTableViewTextCell.buttonHeight)
         showMoreOrLessButton.isHidden = false
-        showMoreOrLessButton.backgroundColor = #colorLiteral(red: 0, green: 1, blue: 0.1022562769, alpha: 1)
+        showMoreOrLessButton.backgroundColor = Styles.brandLightBlue
         showMoreOrLessButton.setTitle(title, for: .normal)
     }
     
@@ -58,7 +58,7 @@ class NewsTableViewTextCell: UITableViewCell {
         showMoreOrLessButton.isHidden = true
     }
     
-    func configure(news: FirebaseNews) {
+    func configure(news: NewViewModel) {
         if let textOfLabel = news.text {
             TextLabel.text = textOfLabel
             

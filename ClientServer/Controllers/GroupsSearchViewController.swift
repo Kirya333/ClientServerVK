@@ -16,21 +16,20 @@ class GroupsSearchViewController: UIViewController {
     let groupTableViewCellIdentifier = "GroupTableViewCellIdentifier"
     let addGroupSegueIdentifier = "addGroup"
     
-    let apiService = VKService()
-    var searchGroups = [GroupModel]()
-
+    let apiVKService = GroupAdapter()
+    
+    var searchGroups = [Group]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        groupsSearchTableView.delegate = self
         groupsSearchTableView.dataSource = self
+        groupsSearchTableView.delegate = self
         groupsSearchTableView.register(UINib(nibName: "GroupTableViewCell", bundle: nil), forCellReuseIdentifier: groupTableViewCellIdentifier)
         
         searchBar.delegate = self
-        
     }
 }
-
 
 extension GroupsSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,11 +55,10 @@ extension GroupsSearchViewController: UITableViewDataSource, UITableViewDelegate
     }
 }
 
-
 extension GroupsSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
-            apiService.getGroupsListWith(query: searchText) { [weak self] groups in
+            apiVKService.getGroupsListWith(query: searchText) { [weak self] groups in
                 guard let self = self else { return }
                 self.searchGroups = groups
                 self.groupsSearchTableView.reloadData()
