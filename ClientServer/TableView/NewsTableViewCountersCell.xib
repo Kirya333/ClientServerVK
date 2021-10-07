@@ -111,11 +111,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="commentButton" destination="j63-Ik-lTG" id="epU-yh-a2r"/>
                 <outlet property="countCommentsLabel" destination="Txb-2L-Gu5" id="7ov-an-J0P"/>
                 <outlet property="countLikesLabel" destination="Ogg-ja-UCS" id="1kZ-c5-Rbc"/>
                 <outlet property="countRepostsLabel" destination="hFC-FU-KaF" id="sma-B9-pmf"/>
                 <outlet property="countViewsLabel" destination="QLB-Jj-ygy" id="fn8-0P-GHF"/>
                 <outlet property="likeButton" destination="ZeR-Mh-lgZ" id="kpl-pV-mxd"/>
+                <outlet property="repostsButton" destination="TwW-Xi-fsR" id="OFt-Da-rvE"/>
+                <outlet property="viewImage" destination="A4H-ve-y3b" id="xVT-Tq-udf"/>
             </connections>
             <point key="canvasLocation" x="86.956521739130437" y="86.383928571428569"/>
         </tableViewCell>
