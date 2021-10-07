@@ -18,10 +18,10 @@ class FriendsListController: UIViewController {
     let fromFriendsListToFriendsPhotosSegueIdentifier = "fromFriendsListToFriendsPhotos"
     
     let apiService = VKService()
+    let realmService = RealmService()
     
-    var friends = [Friend]()
-    
-    var searchFriends = [Friend]()
+    var friends = [UserModel]()
+    var searchFriends = [UserModel]()
     
     var searchFlag = false
     
@@ -40,14 +40,17 @@ class FriendsListController: UIViewController {
     }
     
     func setFriends() {
-        apiService.getFriendsList(by: nil) { [weak self] friends in
+        apiService.getFriendsList(by: nil) { [weak self] in
             guard let self = self else { return }
-            self.friends = friends
-            self.friendsTableView.reloadData()
+            
+            if let friends = self.realmService.read(object: UserModel.self) as? [UserModel] {
+                self.friends = friends
+                self.friendsTableView.reloadData()
+            }
         }
     }
     
-    func getMyFriends() -> [Friend] {
+    func getMyFriends() -> [UserModel] {
         if searchFlag {
             return searchFriends
         }
@@ -69,8 +72,8 @@ class FriendsListController: UIViewController {
         return resultArray
     }
     
-    func arrayByLetter(letter: String) -> [Friend] {
-        var resultArray = [Friend]()
+    func arrayByLetter(letter: String) -> [UserModel] {
+        var resultArray = [UserModel]()
         
         for friend in getMyFriends() {
             let nameLetter = String(friend.getFullName().prefix(1))
@@ -78,6 +81,7 @@ class FriendsListController: UIViewController {
                 resultArray.append(friend)
             }
         }
+        
         return resultArray
     }
     
@@ -101,11 +105,14 @@ extension FriendsListController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return arrayLetter().count
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayByLetter(letter: arrayLetter()[section]).count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: fromFriendsListToFriendsPhotosSegueIdentifier, for: indexPath) as? FriendTableViewCell
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: friendTableViewCellIdentifier, for: indexPath) as? FriendTableViewCell
         else {
             return UITableViewCell()
         }
@@ -116,7 +123,6 @@ extension FriendsListController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(user: friend)
         
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

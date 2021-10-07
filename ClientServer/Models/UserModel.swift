@@ -7,26 +7,30 @@
 
 import Foundation
 import DynamicJSON
+import RealmSwift
 
+class UserModel: Object {
 
-class UserModel: BaseObject {
-
-    var id: Int?
-    var lastName: String?
-    var firstName: String?
-    var photo50: String?
+    @objc dynamic var id = 0
+    @objc dynamic var lastName = ""
+    @objc dynamic var firstName = ""
+    @objc dynamic var avatar = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 
     convenience required init(data: JSON) {
         self.init()
 
-        self.id = data.id.int
-        self.lastName = data.last_name.string
-        self.firstName = data.first_name.string
-        self.photo50 = data.photo_50.string
+        self.id = data.id.int ?? 0
+        self.lastName = data.last_name.string ?? ""
+        self.firstName = data.first_name.string ?? ""
+        self.avatar = data.photo_50.string ?? ""
     }
     
     func getFullName() -> String {
-        return "\(String(describing: firstName)) \(String(describing: lastName))"
+        return "\(firstName) \(lastName)"
     }
 }
 

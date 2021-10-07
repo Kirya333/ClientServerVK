@@ -13,6 +13,11 @@ target 'ClientServer' do
   pod 'DynamicJSON'
   pod 'SDWebImage'
   
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  
+  
 
 
 end
+

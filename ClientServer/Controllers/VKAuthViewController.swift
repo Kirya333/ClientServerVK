@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import SwiftKeychainWrapper
+import FirebaseDatabase
 
 class VKAuthViewController: UIViewController {
     

@@ -7,15 +7,18 @@
 
 import Foundation
 import Alamofire
+import DynamicJSON
+import FirebaseDatabase
 
 class VKService {
     
     let baseUrl = "https://api.vk.com/method/"
     let version = "5.131"
+    let realmService = RealmService()
     
     
     
-    func getFriendsList(by userId: Int?, completion: @escaping ([Friend]) -> ()) {
+    func getFriendsList(by userId: Int?, completion: @escaping () -> ()) {
         let method = "friends.get"
         
         var parameters: Parameters = [
@@ -36,15 +39,19 @@ class VKService {
         
         let url = baseUrl + method
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
+            guard let self = self else { return }
             guard let data = response.value else { return }
-            let friendsResponse = try? JSONDecoder().decode(Friends.self, from: data).response
-            guard let friends = friendsResponse?.items else { return }
-            DispatchQueue.main.async {
-                completion(friends)
-            }
+            guard let items = JSON(data).response.items.array else { return }
+
+            let friends = items.map { UserModel(data: $0) }
+            
+            self.realmService.add(models: friends)
+            
+            completion()
         }
     }
+    
     
     
     
@@ -69,15 +76,17 @@ class VKService {
         
         let url = baseUrl + method
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
+            guard let self = self else { return }
             guard let data = response.value else { return }
-            let photosResponse = try? JSONDecoder().decode(Photos.self, from: data).response
-            guard let photos = photosResponse?.items else { return }
-            DispatchQueue.main.async {
-                completion(photos)
+            guard let items = JSON(data).response.items.array else { return }
+
+            let photos = items.map { PhotoModel(data: $0) }
+            
+            self.realmService.add(models: photos)
+            
             }
         }
-    }
     
     
     
@@ -101,20 +110,22 @@ class VKService {
         
         let url = baseUrl + method
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
+            guard let self = self else { return }
             guard let data = response.value else { return }
-            let groupsResponse = try? JSONDecoder().decode(Groups.self, from: data).response
-            guard let groups = groupsResponse?.items else { return }
-            DispatchQueue.main.async {
-                completion(groups)
+            guard let items = JSON(data).response.items.array else { return }
+
+            let groups = items.map { GroupModel(data: $0) }
+            
+            self.realmService.add(models: groups)
+            
             }
         }
-    }
     
     
     
     
-    func getGroupsListWith(query: String, completion: @escaping ([Group]) -> ()) {
+    func getGroupsListWith(query: String, completion: @escaping ([GroupModel]) -> ()) {
         let method = "groups.search"
         
         let parameters: Parameters = [
@@ -135,11 +146,47 @@ class VKService {
         
         AF.request(url, method: .get, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
-            let groupsResponse = try? JSONDecoder().decode(Groups.self, from: data).response
-            guard let groups = groupsResponse?.items else { return }
+            guard let items = JSON(data).response.items.array else { return }
+
+            let groups = items.map { GroupModel(data: $0) }
+            
             DispatchQueue.main.async {
                 completion(groups)
             }
         }
     }
+    
+    func getNewsfeed() {
+        let method = "newsfeed.get"
+        let ref = Database.database().reference(withPath: "news")
+        
+        let parameters: Parameters = [
+            "filters": "post",
+            //"return_banned": ,
+            //"start_time": ,
+            //"end_time": ,
+            //"max_photos": ,
+            //"source_ids": ,
+            //"start_from": ,
+            "count": "10",
+            //"fields": ,
+            //"section": ,
+            "access_token": Session.shared.token,
+            "v": version
+        ]
+        
+        let url = baseUrl + method
+        
+        AF.request(url, method: .get, parameters: parameters).responseData { response in
+            guard let data = response.value else { return }
+            guard let items = JSON(data).response.items.array else { return }
+            
+            for new in items {
+                let new = FirebaseNews(data: new)
+                let newRef = ref.child(Session.shared.userId).child(String(new.postId))
+                newRef.setValue(new.toAnyObject())
+            }
+        }
+    }
+    
 }
