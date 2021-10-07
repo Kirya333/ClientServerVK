@@ -10,7 +10,7 @@ import RealmSwift
 
 final class UserAdapter {
     
-    private let apiVKService = VKService()
+    private let apiVKService = VKServiceProxy(VKService())
     private let realmService = RealmService()
     
     private var token: NotificationToken?
