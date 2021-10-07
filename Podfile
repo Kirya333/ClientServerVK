@@ -15,6 +15,7 @@ target 'ClientServer' do
   
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'PromiseKit'
   
   
 
