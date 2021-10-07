@@ -14,6 +14,11 @@
 		ED5258D9268B660E001EC3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED5258D8268B660E001EC3DA /* Assets.xcassets */; };
 		ED5258DC268B660E001EC3DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED5258DA268B660E001EC3DA /* LaunchScreen.storyboard */; };
 		ED5258F0268B70D2001EC3DA /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5258EF268B70D2001EC3DA /* ApiService.swift */; };
+		ED6145EF26C17104004B7F44 /* GetPhotoFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6145EE26C17104004B7F44 /* GetPhotoFriend.swift */; };
+		ED6145F126C2A811004B7F44 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6145F026C2A810004B7F44 /* AsyncOperation.swift */; };
+		ED6145F326C2A9B9004B7F44 /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6145F226C2A9B8004B7F44 /* GetDataOperation.swift */; };
+		ED6145F526C2AB43004B7F44 /* ParseFriendsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6145F426C2AB43004B7F44 /* ParseFriendsData.swift */; };
+		ED6145F726C2AC68004B7F44 /* SaveDataToRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6145F626C2AC68004B7F44 /* SaveDataToRealm.swift */; };
 		EDD7665826922BDC00600FE4 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7665726922BDC00600FE4 /* BaseModel.swift */; };
 		EDD7665A26922C1D00600FE4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7665926922C1D00600FE4 /* UserModel.swift */; };
 		EDD7665C26922C4D00600FE4 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7665B26922C4C00600FE4 /* GroupModel.swift */; };
@@ -62,6 +67,11 @@
 		ED5258DB268B660E001EC3DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED5258DD268B660E001EC3DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED5258EF268B70D2001EC3DA /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		ED6145EE26C17104004B7F44 /* GetPhotoFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoFriend.swift; sourceTree = "<group>"; };
+		ED6145F026C2A810004B7F44 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		ED6145F226C2A9B8004B7F44 /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
+		ED6145F426C2AB43004B7F44 /* ParseFriendsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseFriendsData.swift; sourceTree = "<group>"; };
+		ED6145F626C2AC68004B7F44 /* SaveDataToRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataToRealm.swift; sourceTree = "<group>"; };
 		EDD7665726922BDC00600FE4 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		EDD7665926922C1D00600FE4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		EDD7665B26922C4C00600FE4 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
@@ -203,6 +213,11 @@
 			children = (
 				ED5258EF268B70D2001EC3DA /* ApiService.swift */,
 				EDD7669C26AEFC0300600FE4 /* RealmService.swift */,
+				ED6145EE26C17104004B7F44 /* GetPhotoFriend.swift */,
+				ED6145F026C2A810004B7F44 /* AsyncOperation.swift */,
+				ED6145F226C2A9B8004B7F44 /* GetDataOperation.swift */,
+				ED6145F426C2AB43004B7F44 /* ParseFriendsData.swift */,
+				ED6145F626C2AC68004B7F44 /* SaveDataToRealm.swift */,
 			);
 			path = Servises;
 			sourceTree = "<group>";
@@ -385,6 +400,7 @@
 				EDD7669B26AD95D800600FE4 /* FirebaseNews.swift in Sources */,
 				EDD7667A269B9B7300600FE4 /* FriendsPhotosCollectionViewCell.swift in Sources */,
 				EDD7666B269A3DD100600FE4 /* TabBarController.swift in Sources */,
+				ED6145F726C2AC68004B7F44 /* SaveDataToRealm.swift in Sources */,
 				EDD7668F26A1D57600600FE4 /* GroupsListViewController.swift in Sources */,
 				EDD7668A26A0C7B100600FE4 /* NewsTableViewCell.swift in Sources */,
 				EDD766602692566700600FE4 /* SizeModel.swift in Sources */,
@@ -392,7 +408,9 @@
 				EDD7668626A0C3EB00600FE4 /* GroupTableViewCell.swift in Sources */,
 				EDD7669326A1EB6200600FE4 /* NewsListViewController.swift in Sources */,
 				EDD7666926925B2800600FE4 /* LoginFormController.swift in Sources */,
+				ED6145EF26C17104004B7F44 /* GetPhotoFriend.swift in Sources */,
 				ED5258D0268B65F8001EC3DA /* AppDelegate.swift in Sources */,
+				ED6145F326C2A9B9004B7F44 /* GetDataOperation.swift in Sources */,
 				EDD7669926AD954A00600FE4 /* FirebaseGroupAdded.swift in Sources */,
 				EDD7665E2692563700600FE4 /* PhotoModel.swift in Sources */,
 				EDD766A126B72C8B00600FE4 /* Session.swift in Sources */,
@@ -404,7 +422,9 @@
 				EDD76677269B976400600FE4 /* GalleryHorisontalView.swift in Sources */,
 				ED5258F0268B70D2001EC3DA /* ApiService.swift in Sources */,
 				EDD76672269B7E4100600FE4 /* FriendsPhotosViewController.swift in Sources */,
+				ED6145F126C2A811004B7F44 /* AsyncOperation.swift in Sources */,
 				EDD7665A26922C1D00600FE4 /* UserModel.swift in Sources */,
+				ED6145F526C2AB43004B7F44 /* ParseFriendsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

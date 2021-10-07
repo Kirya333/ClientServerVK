@@ -15,10 +15,14 @@ class VKService {
     let baseUrl = "https://api.vk.com/method/"
     let version = "5.131"
     let realmService = RealmService()
+    let dispatchGroup = DispatchGroup()
+    let myQueue = OperationQueue()
     
     
     
-    func getFriendsList(by userId: Int?, completion: @escaping () -> ()) {
+    
+    
+    func getFriendsList(by userId: Int?) {
         let method = "friends.get"
         
         var parameters: Parameters = [
@@ -47,9 +51,20 @@ class VKService {
             let friends = items.map { UserModel(data: $0) }
             
             self.realmService.add(models: friends)
-            
-            completion()
         }
+        
+        let request = AF.request(url, method: .get, parameters: parameters)
+        let getDataOperation = GetDataOperation(request: request)
+        myQueue.addOperation(getDataOperation)
+        
+        let parseData = ParseFriendsData()
+        parseData.addDependency(getDataOperation)
+        myQueue.addOperation(parseData)
+        
+        let saveData = SaveDataToRealm()
+        saveData.addDependency(parseData)
+        OperationQueue.main.addOperation(saveData)
+        
     }
     
     
@@ -177,15 +192,36 @@ class VKService {
         
         let url = baseUrl + method
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
+            guard let self = self else { return }
             guard let data = response.value else { return }
             guard let items = JSON(data).response.items.array else { return }
             
+            let profiles = JSON(data).response.profiles.array ?? []
+            let groups = JSON(data).response.groups.array ?? []
+            
             for new in items {
-                let new = FirebaseNews(data: new)
-                let newRef = ref.child(Session.shared.userId).child(String(new.postId))
-                newRef.setValue(new.toAnyObject())
+                
+                DispatchQueue.global().async(group: self.dispatchGroup) {
+                    print("new \(JSON(new).post_id.int ?? 0)")
+                    let new = FirebaseNews(data: new)
+                    let newRef = ref.child(Session.shared.userId).child(String(new.postId))
+                    newRef.setValue(new.toAnyObject())
+                }
             }
+            
+            for profile in profiles {
+                DispatchQueue.global().async(group: self.dispatchGroup) {
+                    print("profile \(JSON(profile).id.int ?? 0)")
+                }
+            }
+            
+            for group in groups {
+                DispatchQueue.global().async(group: self.dispatchGroup) {
+                    print("group \(JSON(group).id.int ?? 0)")
+                }
+            }
+            
         }
     }
     
