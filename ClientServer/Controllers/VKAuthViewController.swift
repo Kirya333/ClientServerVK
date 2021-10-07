@@ -16,6 +16,7 @@ class VKAuthViewController: UIViewController {
             authVKWebView.navigationDelegate = self
         }
     }
+  
     
     let fromAuthVKToLoginViewSegueIdentifier = "fromAuthVKToLoginView"
     

@@ -10,6 +10,7 @@ target 'ClientServer' do
   pod 'Alamofire'
   pod 'SwiftKeychainWrapper'
   pod 'RealmSwift'
+  pod 'DynamicJSON'
   
 
 
