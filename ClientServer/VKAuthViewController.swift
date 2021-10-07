@@ -7,7 +7,7 @@
 
 import UIKit
 import WebKit
-//import SwiftKeychainWrapper
+import SwiftKeychainWrapper
 
 class VKAuthViewController: UIViewController {
     
@@ -68,7 +68,7 @@ extension VKAuthViewController: WKNavigationDelegate {
             return
         }
         
-//        KeychainWrapper.standard.set(token, forKey: "token")
+        KeychainWrapper.standard.set(token, forKey: "token")
         Session.shared.token = token
         
         UserDefaults.standard.set(userId, forKey: "userId")

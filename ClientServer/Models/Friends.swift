@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 
 struct Friends: Codable {
@@ -17,7 +18,7 @@ struct ResponseFriends: Codable {
     let items: [Friend]
 }
 
-class Friend: Codable {
+class Friend: Object, Codable {
     @objc dynamic var id: Int = 0
     @objc dynamic var lastName: String = ""
     @objc dynamic var firstName: String = ""
