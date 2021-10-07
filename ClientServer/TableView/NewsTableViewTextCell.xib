@@ -22,6 +22,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mI0-HC-owJ">
+                        <rect key="frame" x="64" y="9" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ZMY-fX-exf" secondAttribute="trailing" constant="5" id="9ru-YO-Agd"/>
@@ -33,6 +37,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="TextLabel" destination="ZMY-fX-exf" id="r6q-uy-euO"/>
+                <outlet property="showMoreOrLessButton" destination="mI0-HC-owJ" id="Q7R-rG-9I3"/>
             </connections>
             <point key="canvasLocation" x="88" y="87"/>
         </tableViewCell>

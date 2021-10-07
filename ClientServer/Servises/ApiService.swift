@@ -193,11 +193,11 @@ class VKService {
         }
     }
     
-    func getNewsfeed() {
+    func getNewsfeed(startTime: Int? = nil, startFrom: String? = nil, completion: @escaping (String) -> ()) {
         let method = "newsfeed.get"
         let ref = Database.database().reference(withPath: "news")
         
-        let parameters: Parameters = [
+        var parameters: Parameters = [
             "filters": "post",
             //"return_banned": ,
             //"start_time": ,
@@ -212,6 +212,14 @@ class VKService {
             "v": version
         ]
         
+        if let startTime = startTime {
+            parameters["start_time"] = startTime
+        }
+        
+        if let startFrom = startFrom {
+            parameters["start_from"] = startFrom
+        }
+        
         let url = baseUrl + method
         
         AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
@@ -221,6 +229,7 @@ class VKService {
             
             let profiles = JSON(data).response.profiles.array ?? []
             let groups = JSON(data).response.groups.array ?? []
+            let nextFrom = JSON(data).response.next_from.string ?? ""
             
             for new in items {
                 
@@ -241,6 +250,12 @@ class VKService {
             for group in groups {
                 DispatchQueue.global().async(group: self.dispatchGroup) {
                     print("group \(JSON(group).id.int ?? 0)")
+                }
+            }
+            
+            self.dispatchGroup.notify(queue: .global()) {
+                DispatchQueue.main.async {
+                    completion(nextFrom)
                 }
             }
             

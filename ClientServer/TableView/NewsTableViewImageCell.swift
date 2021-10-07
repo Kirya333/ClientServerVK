@@ -8,8 +8,18 @@
 import UIKit
 
 class NewsTableViewImageCell: UITableViewCell {
+    
+    static let smallIndent: CGFloat = 5.0
 
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var photoImageView: UIImageView! {
+        didSet {
+            photoImageView.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    func photoImageViewFrame(height: CGFloat) {
+        photoImageView.frame = CGRect(x: 0, y: NewsTableViewImageCell.smallIndent, width: contentView.frame.width, height: height)
+    }
     
     func setup() {
         
@@ -23,6 +33,10 @@ class NewsTableViewImageCell: UITableViewCell {
         if let image = news.urlImage {
             photoImageView.sd_setImage(with: URL(string: image))
         }
+        
+        let height = contentView.frame.width * news.apectRatio
+        photoImageViewFrame(height: height)
+        
     }
     
     override func prepareForReuse() {

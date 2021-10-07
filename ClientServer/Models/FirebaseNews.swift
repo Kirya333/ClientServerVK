@@ -20,6 +20,13 @@ class FirebaseNews {
     let viewsCount: Int
     var urlImage: String?
     let ref: DatabaseReference?
+    var heightImage: Int?
+    var widthImage: Int?
+    
+    var apectRatio: CGFloat { return CGFloat(heightImage ?? 1) / CGFloat(widthImage ?? 1) }
+    
+    var isExpanded: Bool = false
+    var heightText: CGFloat = 0
     
     init(data: JSON) {
         self.ref = nil
@@ -39,6 +46,8 @@ class FirebaseNews {
                         for size in sizes {
                             if size.type.string == "x" {
                                 self.urlImage = size.url.string
+                                self.heightImage = size.height.int
+                                self.widthImage = size.width.int
                             }
                         }
                     }
@@ -71,6 +80,8 @@ class FirebaseNews {
         self.repostsCount = repostsCount
         self.viewsCount = viewsCount
         self.urlImage = value["urlImage"] as? String
+        self.heightImage = value["heightImage"] as? Int
+        self.widthImage = value["widthImage"] as? Int
     }
     
     func toAnyObject() -> [String: Any?] {
@@ -83,7 +94,16 @@ class FirebaseNews {
             "userLikes": userLikes,
             "repostsCount": repostsCount,
             "viewsCount": viewsCount,
-            "urlImage": urlImage
+            "urlImage": urlImage,
+            "heightImage": heightImage,
+            "widthImage": widthImage,
         ]
     }
+    
+    func calculateTextHeight(from width: CGFloat, font: UIFont = .systemFont(ofSize: 17)) {
+        let textBlock = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let rect = text?.boundingRect(with: textBlock, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        heightText = ceil(rect?.height ?? 0)
+    }
+    
 }
