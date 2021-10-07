@@ -17,7 +17,7 @@ class GroupTableViewCell: UITableViewCell {
         
     }
     
-    func configure(group:Group) {
+    func configure(group:GroupModel) {
         nameLabel.text = group.name
         avatarImageView.sd_setImage(with: URL(string: group.avatar), placeholderImage: UIImage(named: "community"))
     }

@@ -54,8 +54,12 @@ class GroupsListViewController: UIViewController {
     }
     
     func setGroups() {
-        apiService.getGroupsList(by: nil, completion: <#([Group]) -> ()#>)
+        //apiService.getGroupsList(by: nil, completion: ([Group]) -> ())
 
+        apiService.getGroupsList(by: nil) { groups in
+            
+        }
+        
         guard let realm = try? Realm() else { return }
         groups = realm.objects(GroupModel.self)
     }

@@ -28,7 +28,7 @@ class NewsTableViewCell: UITableViewCell {
         
     }
     
-    func configure(news:News) {
+    func configure(news:FirebaseNews) {
         
     }
     
