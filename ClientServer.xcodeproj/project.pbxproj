@@ -27,6 +27,8 @@
 		ED8ED4D926CACD7A00E3A640 /* NewsTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED8ED4D726CACD7900E3A640 /* NewsTableViewImageCell.xib */; };
 		ED8ED4DC26CAD1EE00E3A640 /* NewsTableViewCountersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8ED4DA26CAD1EE00E3A640 /* NewsTableViewCountersCell.swift */; };
 		ED8ED4DD26CAD1EE00E3A640 /* NewsTableViewCountersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED8ED4DB26CAD1EE00E3A640 /* NewsTableViewCountersCell.xib */; };
+		ED8ED4DF26CC1E6D00E3A640 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8ED4DE26CC1E6D00E3A640 /* LoginService.swift */; };
+		ED8ED4E126CC1F8900E3A640 /* LoginFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8ED4E026CC1F8800E3A640 /* LoginFormViewController.swift */; };
 		EDD7665826922BDC00600FE4 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7665726922BDC00600FE4 /* BaseModel.swift */; };
 		EDD7665A26922C1D00600FE4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7665926922C1D00600FE4 /* UserModel.swift */; };
 		EDD7665C26922C4D00600FE4 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7665B26922C4C00600FE4 /* GroupModel.swift */; };
@@ -86,6 +88,8 @@
 		ED8ED4D726CACD7900E3A640 /* NewsTableViewImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewImageCell.xib; sourceTree = "<group>"; };
 		ED8ED4DA26CAD1EE00E3A640 /* NewsTableViewCountersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCountersCell.swift; sourceTree = "<group>"; };
 		ED8ED4DB26CAD1EE00E3A640 /* NewsTableViewCountersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCountersCell.xib; sourceTree = "<group>"; };
+		ED8ED4DE26CC1E6D00E3A640 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		ED8ED4E026CC1F8800E3A640 /* LoginFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormViewController.swift; sourceTree = "<group>"; };
 		EDD7665726922BDC00600FE4 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		EDD7665926922C1D00600FE4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		EDD7665B26922C4C00600FE4 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				ED6145F626C2AC68004B7F44 /* SaveDataToRealm.swift */,
 				ED8ED4CE26C31C4300E3A640 /* VKServiceError.swift */,
 				ED8ED4D026C3201900E3A640 /* RealmOperation.swift */,
+				ED8ED4DE26CC1E6D00E3A640 /* LoginService.swift */,
 			);
 			path = Servises;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				EDD7668E26A1D57600600FE4 /* GroupsListViewController.swift */,
 				EDD7669026A1DF6800600FE4 /* GroupsSearchViewController.swift */,
 				EDD7669226A1EB6200600FE4 /* NewsListViewController.swift */,
+				ED8ED4E026CC1F8800E3A640 /* LoginFormViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 				EDD76683269DF34900600FE4 /* BackImageView.swift in Sources */,
 				EDD7666D269A3EC400600FE4 /* FriendsListController.swift in Sources */,
 				EDD766622692568C00600FE4 /* LikesModel.swift in Sources */,
+				ED8ED4DF26CC1E6D00E3A640 /* LoginService.swift in Sources */,
 				EDD7669B26AD95D800600FE4 /* FirebaseNews.swift in Sources */,
 				EDD7667A269B9B7300600FE4 /* FriendsPhotosCollectionViewCell.swift in Sources */,
 				EDD7666B269A3DD100600FE4 /* TabBarController.swift in Sources */,
@@ -425,6 +432,7 @@
 				ED8ED4D426CACBE700E3A640 /* NewsTableViewTextCell.swift in Sources */,
 				ED8ED4D126C3201900E3A640 /* RealmOperation.swift in Sources */,
 				EDD766602692566700600FE4 /* SizeModel.swift in Sources */,
+				ED8ED4E126CC1F8900E3A640 /* LoginFormViewController.swift in Sources */,
 				ED5258D4268B65F8001EC3DA /* VKAuthViewController.swift in Sources */,
 				ED8ED4D826CACD7900E3A640 /* NewsTableViewImageCell.swift in Sources */,
 				EDD7668626A0C3EB00600FE4 /* GroupTableViewCell.swift in Sources */,
